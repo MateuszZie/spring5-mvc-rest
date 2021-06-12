@@ -4,9 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
-public class CategoryDTO {
-    private Long id;
-    private String name;
+@AllArgsConstructor
+public class CategoryListDTO {
+
+    List<CategoryDTO> categories;
+
 }
