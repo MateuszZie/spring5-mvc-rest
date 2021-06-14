@@ -10,4 +10,6 @@ public interface CustomerService {
     CustomerDTO getCustomerByUrl(String Url);
 
     CustomerDTO createNewCustomer(CustomerDTO customerDTO);
+
+    CustomerDTO uploadCustomer(String url, CustomerDTO customerDTO);
 }

@@ -30,4 +30,8 @@ public class CustomerController {
     public ResponseEntity<CustomerDTO> createCustomer(@RequestBody CustomerDTO customerDTO){
         return new ResponseEntity<>(customerService.createNewCustomer(customerDTO), HttpStatus.CREATED);
     }
+    @PutMapping({"/{url}"})
+    public ResponseEntity<CustomerDTO> updateCustomer(@PathVariable String url,@RequestBody CustomerDTO customerDTO){
+        return new ResponseEntity<>(customerService.uploadCustomer(url,customerDTO), HttpStatus.OK);
+    }
 }
