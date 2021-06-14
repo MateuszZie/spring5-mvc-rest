@@ -12,4 +12,6 @@ public interface CustomerService {
     CustomerDTO createNewCustomer(CustomerDTO customerDTO);
 
     CustomerDTO uploadCustomer(String url, CustomerDTO customerDTO);
+
+    CustomerDTO patchCustomer(String url, CustomerDTO customerDTO);
 }
