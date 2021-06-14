@@ -34,4 +34,8 @@ public class CustomerController {
     public ResponseEntity<CustomerDTO> updateCustomer(@PathVariable String url,@RequestBody CustomerDTO customerDTO){
         return new ResponseEntity<>(customerService.uploadCustomer(url,customerDTO), HttpStatus.OK);
     }
+    @PatchMapping({"/{url}"})
+    public ResponseEntity<CustomerDTO> pathCustomer(@PathVariable String url,@RequestBody CustomerDTO customerDTO){
+        return new ResponseEntity<>(customerService.patchCustomer(url,customerDTO), HttpStatus.OK);
+    }
 }
