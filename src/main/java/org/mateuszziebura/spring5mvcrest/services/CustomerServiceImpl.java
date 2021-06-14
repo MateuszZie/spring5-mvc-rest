@@ -2,6 +2,7 @@ package org.mateuszziebura.spring5mvcrest.services;
 
 import org.mateuszziebura.spring5mvcrest.api.v1.mapper.CustomerMapper;
 import org.mateuszziebura.spring5mvcrest.api.v1.model.CustomerDTO;
+import org.mateuszziebura.spring5mvcrest.domain.Customer;
 import org.mateuszziebura.spring5mvcrest.repositories.CustomerRepository;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +31,12 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerDTO getCustomerByUrl(String url) {
         return customerMapper.customerToCustomerDto(customerRepository.findByCustomerUrl(url));
+    }
+
+    @Override
+    public CustomerDTO createNewCustomer(CustomerDTO customerDTO) {
+        Customer customer =customerRepository.save(customerMapper.customerDtoToCustomer(customerDTO));
+        CustomerDTO savedCustomerDto = customerMapper.customerToCustomerDto(customer);
+        return savedCustomerDto;
     }
 }
