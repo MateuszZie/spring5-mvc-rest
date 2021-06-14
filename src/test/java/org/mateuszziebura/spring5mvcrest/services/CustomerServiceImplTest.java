@@ -16,7 +16,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 
 class CustomerServiceImplTest {
@@ -73,5 +73,14 @@ class CustomerServiceImplTest {
         //then
         assertEquals(customerDTO.getFirstName(), savedDto.getFirstName());
         assertEquals("someUrl", savedDto.getCustomerUrl());
+    }
+
+    @Test
+    void deleteByUrl() {
+       String url = "test";
+
+        customerService.deleteByUrl(url);
+
+        verify(customerRepository, times(1)).deleteById(anyString());
     }
 }

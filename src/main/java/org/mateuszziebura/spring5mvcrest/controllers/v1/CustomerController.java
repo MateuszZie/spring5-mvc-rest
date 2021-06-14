@@ -38,4 +38,9 @@ public class CustomerController {
     public ResponseEntity<CustomerDTO> pathCustomer(@PathVariable String url,@RequestBody CustomerDTO customerDTO){
         return new ResponseEntity<>(customerService.patchCustomer(url,customerDTO), HttpStatus.OK);
     }
+    @DeleteMapping({"/{url}"})
+    public ResponseEntity<Void> deleteCustomer(@PathVariable String url){
+        customerService.deleteByUrl(url);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

@@ -14,4 +14,6 @@ public interface CustomerService {
     CustomerDTO uploadCustomer(String url, CustomerDTO customerDTO);
 
     CustomerDTO patchCustomer(String url, CustomerDTO customerDTO);
+
+    void deleteByUrl(String url);
 }
