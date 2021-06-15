@@ -52,7 +52,7 @@ public class CustomerServiceImpl implements CustomerService {
     public CustomerDTO patchCustomer(String url, CustomerDTO customerDTO) {
         Customer customer = customerRepository.findByCustomerUrl(url);
         if(customer == null){
-            throw new RuntimeException();
+            throw new ResourceNotFoundException();
         }
 
             if(customerDTO.getFirstName() != null){
