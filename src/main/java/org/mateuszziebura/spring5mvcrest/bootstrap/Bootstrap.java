@@ -2,8 +2,10 @@ package org.mateuszziebura.spring5mvcrest.bootstrap;
 
 import org.mateuszziebura.spring5mvcrest.domain.Category;
 import org.mateuszziebura.spring5mvcrest.domain.Customer;
+import org.mateuszziebura.spring5mvcrest.domain.Vendor;
 import org.mateuszziebura.spring5mvcrest.repositories.CategoryRepository;
 import org.mateuszziebura.spring5mvcrest.repositories.CustomerRepository;
+import org.mateuszziebura.spring5mvcrest.repositories.VendorRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,10 +14,12 @@ public class Bootstrap implements CommandLineRunner {
 
     private CategoryRepository categoryRepository;
     private CustomerRepository customerRepository;
+    private VendorRepository vendorRepository;
 
-    public Bootstrap(CategoryRepository categoryRepository, CustomerRepository customerRepository) {
+    public Bootstrap(CategoryRepository categoryRepository, CustomerRepository customerRepository, VendorRepository vendorRepository) {
         this.categoryRepository = categoryRepository;
         this.customerRepository = customerRepository;
+        this.vendorRepository = vendorRepository;
     }
 
     @Override
@@ -50,6 +54,14 @@ public class Bootstrap implements CommandLineRunner {
         krystian.setLastName("Lis");
         krystian.setCustomerUrl("krystianlis");
 
+        Vendor vendor = new Vendor();
+        vendor.setName("Bob");
+
+        Vendor vendor2 = new Vendor();
+        vendor.setName("July");
+
+        vendorRepository.save(vendor);
+        vendorRepository.save(vendor2);
         customerRepository.save(adam);
         customerRepository.save(mateusz);
         customerRepository.save(krystian);
@@ -59,7 +71,8 @@ public class Bootstrap implements CommandLineRunner {
         categoryRepository.save(exotic);
         categoryRepository.save(nuts);
 
-        System.out.println("Data Loaded = " + customerRepository.count() );
-        System.out.println("Data Loaded = " + categoryRepository.count() );
+        System.out.println("Data vendor Loaded = " + vendorRepository.count() );
+        System.out.println("Data customer Loaded = " + customerRepository.count() );
+        System.out.println("Data category Loaded = " + categoryRepository.count() );
     }
 }
