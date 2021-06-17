@@ -25,7 +25,7 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any())
                 .build()
                 .pathMapping("/")
-                .tags(new Tag("Customer","it's customer"))
+                .tags(new Tag("Customer","it's customer"),new Tag("Vendor","Vendors"))
                 .apiInfo(metaData());
     }
     private ApiInfo metaData(){

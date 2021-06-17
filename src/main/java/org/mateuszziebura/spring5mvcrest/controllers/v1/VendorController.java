@@ -1,5 +1,7 @@
 package org.mateuszziebura.spring5mvcrest.controllers.v1;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.mateuszziebura.spring5mvcrest.api.v1.model.VendorDTO;
 import org.mateuszziebura.spring5mvcrest.api.v1.model.VendorListDTO;
 import org.mateuszziebura.spring5mvcrest.services.VendorService;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api(tags = "Vendor")
 @RestController
 @RequestMapping(VendorController.BASE_URL)
 public class VendorController {
@@ -20,6 +23,7 @@ public class VendorController {
         this.vendorService = vendorService;
     }
 
+    @ApiOperation(value = "For Vendors click here" , notes = "Check this vendors")
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public VendorListDTO getAllVendors(){
