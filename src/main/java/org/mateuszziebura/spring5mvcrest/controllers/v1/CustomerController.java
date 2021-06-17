@@ -1,5 +1,7 @@
 package org.mateuszziebura.spring5mvcrest.controllers.v1;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.mateuszziebura.spring5mvcrest.api.v1.model.CustomerDTO;
 import org.mateuszziebura.spring5mvcrest.api.v1.model.CustomerListDTO;
 import org.mateuszziebura.spring5mvcrest.services.CustomerService;
@@ -8,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+@Api(tags = "Customer")
 @Controller
 @RequestMapping("api/v1/customers")
 public class CustomerController {
@@ -18,6 +21,7 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
+    @ApiOperation(value = "It's get Customers", notes = "some note")
     @GetMapping
     public ResponseEntity<CustomerListDTO> getCustomersList(){
         return new ResponseEntity<>(new CustomerListDTO(customerService.getCustomers()), HttpStatus.OK);
